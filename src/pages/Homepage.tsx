@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Tile from '../components/Tile';
+import { AppProfile } from '../models/models';
 
-function Application(): JSX.Element {
+function Homepage(): JSX.Element {
+
+    const [appList, setAppList] = useState<AppProfile[]>([])
+    useEffect(() => {
+
+    }, [])
+
     return (
         <div>
-            <h1>About Page</h1>
-            <Tile />
+            <div className='p-9 text-2xl m-5'>
+                <h1>Ontario Driver's License Application</h1>
+            </div>
+            <div className='border border-black p-9 m-5'>
+                {
+                    appList.length === 0 ?
+
+                        <h2>No Application Created</h2>
+                        : <Tile />
+                }
+            </div>
+            <div className='border border-black rounded-lg w-40 mx-auto text-base p-2'>
+                <p>New Application</p>
+            </div>
         </div>
     )
 }
 
-export default Application;
+export default Homepage;
