@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Tile from '../components/Tile';
-import { AppProfile } from '../models/models';
+import { AppProfileDB, AppProfile } from '../models/models';
 import axios from 'axios';
 
 function Homepage(): JSX.Element {
 
-    const [appList, setAppList] = useState<AppProfile[]>([])
+    const [appList, setAppList] = useState<AppProfileDB[]>([])
     useEffect(() => {
         const rootURL = process.env.REACT_APP_LOCAL_URL;
         const getAppsURL = rootURL + "/applications"
@@ -24,16 +24,22 @@ function Homepage(): JSX.Element {
             <div className='p-9 text-2xl m-5'>
                 <h1>Ontario Driver's License Application</h1>
             </div>
-            <div className='border border-black p-9 m-5'>
+            <div className='border border-black p-9 mx-auto my-5 w-2/5'>
                 {
                     appList.length === 0 ?
 
                         <h2>No Application Created</h2>
-                        : <Tile />
+                        :
+                        appList.map((app) => {
+                            console.log(app)
+                            return <div className='cursor-pointer mb-6'>
+                                <Tile appID={app["app_id"]} appStatus={app["app_status"]} appDate={app["app_date"]} />
+                            </div>
+                        })
                 }
             </div>
-            <div className='border border-black rounded-lg w-40 mx-auto text-base p-2'>
-                <p>New Application</p>
+            <div className='border border-blue-400 rounded-lg bg-blue-400 w-40 mx-auto text-base p-2 cursor-pointer'>
+                <p className='text-white'>New Application</p>
             </div>
         </div>
     )
