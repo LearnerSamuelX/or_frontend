@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import Tile from '../components/Tile';
 import { AppProfile } from '../models/models';
+import axios from 'axios';
 
 function Homepage(): JSX.Element {
 
     const [appList, setAppList] = useState<AppProfile[]>([])
     useEffect(() => {
-
+        const rootURL = process.env.REACT_APP_LOCAL_URL;
+        const getAppsURL = rootURL + "/applications"
+        axios.get(getAppsURL).then(
+            (res) => setAppList((prev) => {
+                prev = res.data
+                return prev
+            })
+        ).catch((err) => {
+            console.log(err)
+        })
     }, [])
 
     return (
