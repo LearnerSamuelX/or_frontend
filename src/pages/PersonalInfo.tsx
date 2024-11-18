@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 function PersonalInfo(): JSX.Element {
     return (
         <div className='flex flex-col w-2/5 mx-auto'>
-            <div className='p-9 text-2xl m-5 font-bold'>
+            <div className='py-9 text-xl mt-5 font-bold text-left'>
                 <h1>Personal Information</h1>
             </div>
             <div>
