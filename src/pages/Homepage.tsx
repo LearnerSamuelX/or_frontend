@@ -21,7 +21,7 @@ function Homepage(): JSX.Element {
 
     return (
         <div>
-            <div className='p-9 text-2xl m-5'>
+            <div className='p-9 text-2xl m-5 font-bold'>
                 <h1>Ontario Driver's License Application</h1>
             </div>
             <div className='border border-black p-9 mx-auto my-5 w-2/5'>
