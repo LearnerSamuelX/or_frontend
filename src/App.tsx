@@ -4,8 +4,9 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from './pages/Homepage';
 import NotFound from './pages/NotFound';
-import PersonalInfo from './pages/PersonalInfo';
-import ResidentialInfo from './pages/ResidentialInfo';
+// import PersonalInfo from './components/PersonalInfo';
+// import ResidentialInfo from './components/ResidentialInfo';
+import Application from './pages/Application';
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
           <Route path="/" element={<Homepage />} />
-          <Route path="/application/:id/i" element={<PersonalInfo />} />
-          <Route path="/application/:id/ii" element={<ResidentialInfo />} />
+          {/* <Route path="/application/:id/i" element={<PersonalInfo />} />
+          <Route path="/application/:id/ii" element={<ResidentialInfo />} /> */}
+          <Route path="/application/:id" element={<Application />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 function PersonalInfo(): JSX.Element {
     return (
-        <div className='flex flex-col w-2/5 mx-auto'>
+        <div>
             <div className='py-9 text-xl mt-5 font-bold text-left'>
                 <h1>Personal Information</h1>
             </div>
@@ -42,14 +42,14 @@ function PersonalInfo(): JSX.Element {
                         </FormControl>
                     </div>
                 </div>
-                <div className='flex flex-row mt-5 mx-auto w-3/5'>
+                {/* <div className='flex flex-row mt-5 mx-auto w-3/5'>
                     <div className='border border-green-400 rounded-lg bg-green-400 w-1/4 mx-auto text-base p-2 cursor-pointer'>
                         <p className='text-white'>Save</p>
                     </div>
                     <div className='border border-blue-400 rounded-lg bg-blue-400 w-1/4 mx-auto text-base p-2 cursor-pointer'>
                         <p className='text-white'>Next</p>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div >
     )
