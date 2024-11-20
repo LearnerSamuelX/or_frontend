@@ -1,9 +1,12 @@
 import { TextField, FormControl, InputLabel, MenuItem } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { useEffect, useState } from 'react';
+import { Personal } from '../models/models';
 
 
-function PersonalInfo(): JSX.Element {
+function PersonalInfo({ personalData, onPersonalDataChange }: {
+    personalData: Personal, onPersonalDataChange: (prop: string, value: string) => void
+}): JSX.Element {
     return (
         <div>
             <div className='py-9 text-xl mt-5 font-bold text-left'>
@@ -12,20 +15,20 @@ function PersonalInfo(): JSX.Element {
             <div>
                 <div className='flex flex-row'>
                     <div className='p-5'>
-                        <TextField label="First Name" variant="outlined" fullWidth />
+                        <TextField label="First Name" variant="outlined" fullWidth onChange={(e) => onPersonalDataChange("firstname", e.target.value)} />
                     </div>
                     <div className='p-5'>
-                        <TextField label="Middle Name" variant="outlined" fullWidth />
+                        <TextField label="Middle Name" variant="outlined" fullWidth onChange={(e) => onPersonalDataChange("middlename", e.target.value)} />
                     </div>
                     <div className='p-5'>
-                        <TextField label="Last Name" variant="outlined" fullWidth />
+                        <TextField label="Last Name" variant="outlined" fullWidth onChange={(e) => onPersonalDataChange("lastname", e.target.value)} />
                     </div>
                 </div>
                 <div className='p-5'>
-                    <TextField label="Ontario Driver's License Number" variant="outlined" fullWidth />
+                    <TextField label="Ontario Driver's License Number" variant="outlined" fullWidth onChange={(e) => onPersonalDataChange("dlNum", e.target.value)} />
                 </div>
                 <div className='p-5'>
-                    <TextField label="Date of Birth" variant="outlined" fullWidth helperText="Format: YYYY-MM-DD" />
+                    <TextField label="Date of Birth" variant="outlined" fullWidth helperText="Format: YYYY-MM-DD" onChange={(e) => onPersonalDataChange("dob", e.target.value)} />
                 </div>
                 <div className='flex flex-row w-3/5 mx-auto'>
                     <div className='m-auto p-5 w-2/5'>
@@ -34,7 +37,7 @@ function PersonalInfo(): JSX.Element {
                     <div className='m-auto py-5 w-1/4'>
                         <FormControl fullWidth>
                             <InputLabel>Gender</InputLabel>
-                            <Select label="Gender">
+                            <Select label="Gender" onChange={(e) => onPersonalDataChange("gender", e.target.value as string)}>
                                 <MenuItem value={"M"}>Male</MenuItem>
                                 <MenuItem value={"F"}>Female</MenuItem>
                                 <MenuItem value={"X"}>X</MenuItem>
@@ -42,14 +45,6 @@ function PersonalInfo(): JSX.Element {
                         </FormControl>
                     </div>
                 </div>
-                {/* <div className='flex flex-row mt-5 mx-auto w-3/5'>
-                    <div className='border border-green-400 rounded-lg bg-green-400 w-1/4 mx-auto text-base p-2 cursor-pointer'>
-                        <p className='text-white'>Save</p>
-                    </div>
-                    <div className='border border-blue-400 rounded-lg bg-blue-400 w-1/4 mx-auto text-base p-2 cursor-pointer'>
-                        <p className='text-white'>Next</p>
-                    </div>
-                </div> */}
             </div>
         </div >
     )

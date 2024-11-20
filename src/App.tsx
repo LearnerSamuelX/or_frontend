@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           {/* <Route path="/application/:id/i" element={<PersonalInfo />} />
           <Route path="/application/:id/ii" element={<ResidentialInfo />} /> */}
-          <Route path="/application/:id" element={<Application />} />
+          <Route path="/application/:appID" element={<Application />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

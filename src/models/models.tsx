@@ -15,7 +15,7 @@ export type Personal = {
     lastname: string
     middlename: string | undefined
     dlNum: string
-    dob: number
+    dob: string
     gender: "M" | "F" | "X"
     height: number
 }
