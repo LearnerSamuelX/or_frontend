@@ -10,11 +10,11 @@ import axios from "axios"
 
 function Application() {
     const [appInfo, setAppInfo] = useState<ApplicationInfo>({
-        appID: "",
-        firstname: "",
-        lastname: "",
-        middlename: undefined,
-        dlNum: "",
+        app_id: "",
+        first_name: "",
+        last_name: "",
+        middle_name: undefined,
+        dl_num: "",
         dob: "",
         gender: "M",
         height: 0,
@@ -23,7 +23,7 @@ function Application() {
         postalcode: "",
         city: "",
         street: "",
-        streetNum: 0
+        street_num: 0
     })
     const [loading, setLoading] = useState<boolean | undefined>(undefined)
     const [found, setFound] = useState<boolean>(false)
@@ -50,12 +50,12 @@ function Application() {
         axios.get(getAppURL).then(
             (res) => {
                 let obj = res.data
-                console.log(obj)
                 for (let key in obj) {
-                    if (obj.hasOwnProperty(key)) { // Check if the property is not inherited
+                    if (obj.hasOwnProperty(key)) {
                         handleInfoChange(key, obj[key])
                     }
                 }
+
                 setFound((prev) => {
                     return prev = true
                 })
@@ -64,7 +64,6 @@ function Application() {
             console.log(err)
         })
 
-        // console.log(appInfo)
     }, [found])
 
     return (

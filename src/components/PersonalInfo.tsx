@@ -1,5 +1,5 @@
 import { TextField, FormControl, InputLabel, MenuItem } from '@mui/material';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import React, { useEffect, useState } from 'react';
 import { ApplicationInfo } from '../models/models';
 

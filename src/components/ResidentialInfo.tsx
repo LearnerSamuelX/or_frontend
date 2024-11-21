@@ -1,4 +1,4 @@
-import { TextField, InputLabelProps } from '@mui/material';
+import { TextField } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Residential } from '../models/models';
 

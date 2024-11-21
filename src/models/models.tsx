@@ -11,10 +11,10 @@ export type AppProfile = {
 }
 
 export type Personal = {
-    firstname: string
-    lastname: string
-    middlename: string | undefined
-    dlNum: string
+    first_name: string
+    last_name: string
+    middle_name: string | undefined
+    dl_num: string
     dob: string
     gender: "M" | "F" | "X"
     height: number
@@ -25,9 +25,9 @@ export type Residential = {
     postalcode: string
     city: string
     street: string
-    streetNum: number
+    street_num: number
 }
 
 export type ApplicationInfo = {
-    appID: string
+    app_id: string
 } & Personal & Residential
