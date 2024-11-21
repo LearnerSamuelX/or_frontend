@@ -31,7 +31,7 @@ function Homepage(): JSX.Element {
                         <h2>No Application Created</h2>
                         :
                         appList.map((app) => {
-                            console.log(app)
+                            // console.log(app)
                             return <div className='cursor-pointer mb-6'>
                                 <Tile appID={app["app_id"]} appStatus={app["app_status"]} appDate={app["app_date"]} />
                             </div>

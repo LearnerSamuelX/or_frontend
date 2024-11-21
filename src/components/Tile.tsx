@@ -11,9 +11,9 @@ function Tile(props: AppProfile): JSX.Element {
     })
 
     useEffect(() => {
-        console.log(props.appID)
-        console.log(props.appDate)
-        console.log(props.appStatus)
+        // console.log(props.appID)
+        // console.log(props.appDate)
+        // console.log(props.appStatus)
 
     })
 

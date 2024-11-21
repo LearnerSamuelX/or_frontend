@@ -5,6 +5,7 @@ import SaveButton from "../components/SaveButton"
 import SubmitButton from "../components/SubmitButton"
 import { ApplicationInfo } from "../models/models"
 import { useParams } from 'react-router-dom';
+import axios from "axios"
 
 
 function Application() {
@@ -24,12 +25,10 @@ function Application() {
         street: "",
         streetNum: 0
     })
+    const [loading, setLoading] = useState<boolean | undefined>(undefined)
+    const [found, setFound] = useState<boolean>(false)
 
     const { appID } = useParams();
-
-    useEffect(() => {
-        // console.log(appID) // use this ID to retrieve application
-    })
 
     const handleInfoChange = (prop: string, value: string) => {
         setAppInfo((prev) => {
@@ -40,14 +39,50 @@ function Application() {
         });
     };
 
+    useEffect(() => {
+        const rootURL = process.env.REACT_APP_LOCAL_URL;
+        const getAppURL = rootURL + "/application/" + appID
+
+        setLoading((prev) => {
+            return prev = true
+        })
+
+        axios.get(getAppURL).then(
+            (res) => {
+                let obj = res.data
+                console.log(obj)
+                for (let key in obj) {
+                    if (obj.hasOwnProperty(key)) { // Check if the property is not inherited
+                        handleInfoChange(key, obj[key])
+                    }
+                }
+                setFound((prev) => {
+                    return prev = true
+                })
+            }
+        ).catch((err) => {
+            console.log(err)
+        })
+
+        // console.log(appInfo)
+    }, [found])
+
     return (
         <div className='flex flex-col w-2/5 mx-auto'>
-            <PersonalInfo personalData={appInfo} onPersonalDataChange={handleInfoChange} />
-            <ResidentialInfo residentialData={appInfo} onResidentialDataChange={handleInfoChange} />
-            <div className='flex flex-row mt-5 mx-auto w-3/5'>
-                <SaveButton />
-                <SubmitButton />
-            </div>
+            {
+                found === true ?
+                    <div>
+                        <PersonalInfo personalData={appInfo} onPersonalDataChange={handleInfoChange} />
+                        <ResidentialInfo residentialData={appInfo} onResidentialDataChange={handleInfoChange} />
+                        <div className='flex flex-row mt-5 mx-auto w-3/5'>
+                            <SaveButton />
+                            <SubmitButton />
+                        </div>
+                    </div> :
+                    <div className="mt-60 text-2xl">
+                        <h1>Application with ID {appID} was not found.</h1>
+                    </div>
+            }
         </div >
     )
 }

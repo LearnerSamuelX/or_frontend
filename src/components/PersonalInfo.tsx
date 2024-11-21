@@ -15,7 +15,7 @@ function PersonalInfo({ personalData, onPersonalDataChange }:
             <div>
                 <div className='flex flex-row'>
                     <div className='p-5'>
-                        <TextField label="First Name" variant="outlined" fullWidth onChange={(e) => onPersonalDataChange("firstname", e.target.value)} />
+                        <TextField label="First Name" variant="outlined" fullWidth defaultValue={"Sam Xie"} onChange={(e) => onPersonalDataChange("firstname", e.target.value)} />
                     </div>
                     <div className='p-5'>
                         <TextField label="Middle Name" variant="outlined" fullWidth onChange={(e) => onPersonalDataChange("middlename", e.target.value)} />
