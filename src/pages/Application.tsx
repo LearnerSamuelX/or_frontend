@@ -43,7 +43,7 @@ function Application() {
     return (
         <div className='flex flex-col w-2/5 mx-auto'>
             <PersonalInfo personalData={appInfo} onPersonalDataChange={handleInfoChange} />
-            <ResidentialInfo />
+            <ResidentialInfo residentialData={appInfo} onResidentialDataChange={handleInfoChange} />
             <div className='flex flex-row mt-5 mx-auto w-3/5'>
                 <SaveButton />
                 <SubmitButton />

@@ -1,12 +1,12 @@
 import { TextField, FormControl, InputLabel, MenuItem } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React, { useEffect, useState } from 'react';
-import { Personal } from '../models/models';
+import { ApplicationInfo } from '../models/models';
 
 
-function PersonalInfo({ personalData, onPersonalDataChange }: {
-    personalData: Personal, onPersonalDataChange: (prop: string, value: string) => void
-}): JSX.Element {
+function PersonalInfo({ personalData, onPersonalDataChange }:
+    { personalData: ApplicationInfo, onPersonalDataChange: (prop: string, value: string) => void }
+): JSX.Element {
     return (
         <div>
             <div className='py-9 text-xl mt-5 font-bold text-left'>
