@@ -64,6 +64,8 @@ function Application() {
             console.log(err)
         })
 
+        console.log(appInfo)
+
     }, [found])
 
     return (
@@ -74,7 +76,7 @@ function Application() {
                         <PersonalInfo personalData={appInfo} onPersonalDataChange={handleInfoChange} />
                         <ResidentialInfo residentialData={appInfo} onResidentialDataChange={handleInfoChange} />
                         <div className='flex flex-row mt-5 mx-auto w-3/5'>
-                            <SaveButton />
+                            <SaveButton appInfo={appInfo} />
                             <SubmitButton />
                         </div>
                     </div> :
