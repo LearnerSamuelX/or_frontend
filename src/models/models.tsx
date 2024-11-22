@@ -26,6 +26,7 @@ export type Residential = {
     city: string
     street: string
     street_num: number
+    unit_num: number
 }
 
 export type ApplicationInfo = {

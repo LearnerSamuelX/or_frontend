@@ -19,6 +19,17 @@ function ResidentialInfo(
                     </div> */}
                     <div className='p-5 w-2/5'>
                         <TextField
+                            label="Unit Number"
+                            variant="outlined"
+                            fullWidth
+                            defaultValue={
+                                residentialData.unit_num < 1 ? null : residentialData.unit_num
+                            }
+                            onChange={(e) => onResidentialDataChange("unit_num", e.target.value)}
+                        />
+                    </div>
+                    <div className='p-5 w-2/5'>
+                        <TextField
                             label="Street Number"
                             variant="outlined"
                             fullWidth

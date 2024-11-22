@@ -12,11 +12,11 @@ function SubmitButton(
         let validated = true
         for (let key in appInfo) {
             if (appInfo.hasOwnProperty(key)) {
-                if (appInfo[key] === 0) {
+                if (key !== "unit_num" && appInfo[key] === 0) {
                     validated = false
                 }
 
-                if (key !== "middle_name" && appInfo[key].length === 0) {
+                if (appInfo[key].length === 0 && (key !== "middle_name" && key !== "unit_num")) {
                     validated = false
                 }
             }

@@ -23,7 +23,8 @@ function Application(): JSX.Element {
         postalcode: "",
         city: "",
         street: "",
-        street_num: 0
+        street_num: 0,
+        unit_num: 0
     })
     const [error, setError] = useState<boolean>(false)
     const [found, setFound] = useState<boolean>(false)
