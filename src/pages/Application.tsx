@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import axios from "axios"
 
 
-function Application() {
+function Application(): JSX.Element {
     const [appInfo, setAppInfo] = useState<ApplicationInfo>({
         app_id: "",
         first_name: "",

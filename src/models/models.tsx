@@ -1,12 +1,12 @@
 export type AppProfileDB = {
     app_id: string,
-    app_date: string,
+    change_date: number,
     app_status: number
 }
 
 export type AppProfile = {
     appID: string
-    appDate: string
+    appDate: number
     appStatus: number
 }
 

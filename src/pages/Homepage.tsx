@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Tile from '../components/Tile';
-import { AppProfileDB, AppProfile } from '../models/models';
+import { AppProfileDB } from '../models/models';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
@@ -27,7 +27,7 @@ function Homepage(): JSX.Element {
             <div className='p-9 text-2xl m-5 font-bold'>
                 <h1>Ontario Driver's License Application</h1>
             </div>
-            <div className='border border-black p-9 mx-auto my-5 w-2/5'>
+            <div className='p-9 mx-auto my-5 w-2/5'>
                 {
                     appList.length === 0 ?
 
@@ -35,7 +35,7 @@ function Homepage(): JSX.Element {
                         :
                         appList.map((app) => {
                             return <div className='cursor-pointer mb-6'>
-                                <Tile appID={app["app_id"]} appStatus={app["app_status"]} appDate={app["app_date"]} />
+                                <Tile appID={app["app_id"]} appStatus={app["app_status"]} appDate={app["change_date"]} />
                             </div>
                         })
                 }

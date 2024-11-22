@@ -27,7 +27,6 @@ function SubmitButton(
     const navigate = useNavigate()
 
     function submitInfo() {
-        console.log(appInfo)
         const validationResult = inputValidator()
         if (validationResult) {
             const rootURL = process.env.REACT_APP_LOCAL_URL;

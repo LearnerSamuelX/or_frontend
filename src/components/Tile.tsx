@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AppProfile } from '../models/models';
 import { useNavigate } from "react-router-dom";
 
@@ -10,28 +10,29 @@ function Tile(props: AppProfile): JSX.Element {
         appStatus: props.appStatus
     })
 
-    useEffect(() => {
-        // console.log(props.appID)
-        // console.log(props.appDate)
-        // console.log(props.appStatus)
-
-    })
-
     const navigate = useNavigate()
 
+    function dateConverter(timestamp: number): string {
+        const date = new Date(timestamp * 1000)
+        const formattedDate = date.toISOString().split('T')[0]
+        return formattedDate
+    }
+
     return (
-        <div className='border border-black flex flex-row text-center' onClick={() => {
-            navigate("/application/" + props.appID)
+        <div className='border border-black rounded-lg flex flex-row text-center' onClick={() => {
+            if (props.appStatus === 0) {
+                navigate("/application/" + props.appID)
+            }
         }}>
             <div className='p-5'>
                 <h2>Application ID {appProfile.appID}</h2>
             </div>
             <div className='w-2/5 ml-auto'>
                 <div className='p-2'>
-                    <h2>App Date</h2>
+                    <h2>{dateConverter(props.appDate)}</h2>
                 </div>
                 <div className='p-2'>
-                    {props.appStatus === 0 ? <h2>Open</h2> : <h2>Submitted</h2>}
+                    {props.appStatus === 0 ? <h2 className='text-yellow-500'>Open</h2> : <h2 className='text-emerald-500'>Submitted</h2>}
                 </div>
             </div>
         </div>
