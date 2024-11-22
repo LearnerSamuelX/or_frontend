@@ -1,6 +1,7 @@
 import { TextField } from '@mui/material';
 import React, { useState, ChangeEvent, useEffect } from 'react';
 import { AppProfile } from '../models/models';
+import { useNavigate } from "react-router-dom";
 
 
 function Tile(props: AppProfile): JSX.Element {
@@ -17,8 +18,12 @@ function Tile(props: AppProfile): JSX.Element {
 
     })
 
+    const navigate = useNavigate()
+
     return (
-        <div className='border border-black flex flex-row text-center'>
+        <div className='border border-black flex flex-row text-center' onClick={() => {
+            navigate("/application/" + props.appID)
+        }}>
             <div className='p-5'>
                 <h2>Application ID {appProfile.appID}</h2>
             </div>

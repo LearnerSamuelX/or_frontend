@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Tile from '../components/Tile';
 import { AppProfileDB, AppProfile } from '../models/models';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 function Homepage(): JSX.Element {
 
@@ -18,6 +19,8 @@ function Homepage(): JSX.Element {
             console.log(err)
         })
     }, [])
+
+    const navigate = useNavigate()
 
     return (
         <div>
@@ -37,10 +40,17 @@ function Homepage(): JSX.Element {
                         })
                 }
             </div>
-            <div className='border border-blue-400 rounded-lg bg-blue-400 w-40 mx-auto text-base p-2 cursor-pointer'>
+            <div className='border border-blue-400 rounded-lg bg-blue-400 w-40 mx-auto text-base p-2 cursor-pointer' onClick={() => {
+                const rootURL = process.env.REACT_APP_LOCAL_URL;
+                const createAppURL = rootURL + "/create"
+                axios.post(createAppURL).then((res) => {
+                    const rawData = res.data
+                    navigate("/application/" + rawData.app_id)
+                })
+            }}>
                 <p className='text-white'>New Application</p>
             </div>
-        </div>
+        </div >
     )
 }
 
