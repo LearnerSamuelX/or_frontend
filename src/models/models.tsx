@@ -30,4 +30,5 @@ export type Residential = {
 
 export type ApplicationInfo = {
     app_id: string
+    [key: string]: any
 } & Personal & Residential

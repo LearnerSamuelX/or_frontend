@@ -28,8 +28,6 @@ function Application() {
     const [loading, setLoading] = useState<boolean | undefined>(undefined)
     const [found, setFound] = useState<boolean>(false)
 
-    const { appID } = useParams();
-
     const handleInfoChange = (prop: string, value: string) => {
         setAppInfo((prev) => {
             return {
@@ -39,6 +37,8 @@ function Application() {
         });
     };
 
+
+    const { appID } = useParams();
     useEffect(() => {
         const rootURL = process.env.REACT_APP_LOCAL_URL;
         const getAppURL = rootURL + "/application/" + appID
@@ -55,7 +55,6 @@ function Application() {
                         handleInfoChange(key, obj[key])
                     }
                 }
-
                 setFound((prev) => {
                     return prev = true
                 })
@@ -63,9 +62,6 @@ function Application() {
         ).catch((err) => {
             console.log(err)
         })
-
-        console.log(appInfo)
-
     }, [found])
 
     return (
@@ -77,7 +73,7 @@ function Application() {
                         <ResidentialInfo residentialData={appInfo} onResidentialDataChange={handleInfoChange} />
                         <div className='flex flex-row mt-5 mx-auto w-3/5'>
                             <SaveButton appInfo={appInfo} />
-                            <SubmitButton />
+                            <SubmitButton appInfo={appInfo} />
                         </div>
                     </div> :
                     <div className="mt-60 text-2xl">

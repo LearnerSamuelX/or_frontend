@@ -89,6 +89,7 @@ function PersonalInfo({ personalData, onPersonalDataChange }:
                                 personalData.height === 0 ?
                                     null : personalData.dob
                             }
+                            onChange={(e) => onPersonalDataChange("height", e.target.value)}
                         />
                     </div>
                     <div className='m-auto py-5 w-1/4'>

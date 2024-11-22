@@ -13,7 +13,6 @@ function SaveButton(
         const rootURL = process.env.REACT_APP_LOCAL_URL
         const saveAppURL = rootURL + "/save"
         axios.post(saveAppURL, appInfo).then((res) => {
-            console.log(res)
             navigate("/")
         }).catch((err) => {
             console.log("ERROR: error in saving application.")
