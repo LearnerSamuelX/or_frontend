@@ -17,13 +17,13 @@ function ResidentialInfo(
                     {/* <div className='p-5 w-1/5'>
                         <TextField label="Number" variant="outlined" fullWidth onChange={(e) => onResidentialDataChange("unitNum", e.target.value)} />
                     </div> */}
-                    <div className='p-5 w-1/5'>
+                    <div className='p-5 w-2/5'>
                         <TextField
-                            label="Number"
+                            label="Street Number"
                             variant="outlined"
                             fullWidth
                             defaultValue={
-                                residentialData.street_num === 0 ? null : residentialData.street_num
+                                residentialData.street_num < 1 ? null : residentialData.street_num
                             }
                             onChange={(e) => onResidentialDataChange("street_num", e.target.value)}
                         />

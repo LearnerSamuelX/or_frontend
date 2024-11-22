@@ -25,27 +25,13 @@ function Application(): JSX.Element {
         street: "",
         street_num: 0
     })
-    const [loading, setLoading] = useState<boolean | undefined>(undefined)
+    const [error, setError] = useState<boolean>(false)
     const [found, setFound] = useState<boolean>(false)
-
-    const handleInfoChange = (prop: string, value: string) => {
-        setAppInfo((prev) => {
-            return {
-                ...prev,
-                [prop]: value
-            }
-        });
-    };
-
-
     const { appID } = useParams();
+
     useEffect(() => {
         const rootURL = process.env.REACT_APP_LOCAL_URL;
         const getAppURL = rootURL + "/application/" + appID
-
-        setLoading((prev) => {
-            return prev = true
-        })
 
         axios.get(getAppURL).then(
             (res) => {
@@ -58,27 +44,51 @@ function Application(): JSX.Element {
                 setFound((prev) => {
                     return prev = true
                 })
+
+                setError((prev) => {
+                    return prev = false
+                })
             }
         ).catch((err) => {
             console.log(err)
+            setError((prev) => {
+                return prev = true
+            })
         })
     }, [found])
 
+    const handleInfoChange = (prop: string, value: string) => {
+        setAppInfo((prev) => {
+            return {
+                ...prev,
+                [prop]: value
+            }
+        });
+    };
+
+
     return (
         <div className='flex flex-col w-2/5 mx-auto'>
-            {
-                found === true ?
-                    <div>
-                        <PersonalInfo personalData={appInfo} onPersonalDataChange={handleInfoChange} />
-                        <ResidentialInfo residentialData={appInfo} onResidentialDataChange={handleInfoChange} />
-                        <div className='flex flex-row mt-5 mx-auto w-3/5'>
-                            <SaveButton appInfo={appInfo} />
-                            <SubmitButton appInfo={appInfo} />
-                        </div>
-                    </div> :
-                    <div className="mt-60 text-2xl">
-                        <h1>Application with ID {appID} was not found.</h1>
-                    </div>
+            {!error ?
+                <div>
+                    {
+                        found === true ?
+                            <div>
+                                <PersonalInfo personalData={appInfo} onPersonalDataChange={handleInfoChange} />
+                                <ResidentialInfo residentialData={appInfo} onResidentialDataChange={handleInfoChange} />
+                                <div className='flex flex-row mt-5 mx-auto w-3/5'>
+                                    <SaveButton appInfo={appInfo} />
+                                    <SubmitButton appInfo={appInfo} />
+                                </div>
+                            </div> :
+                            <div className="mt-60 text-2xl">
+                                <h1>Loading...</h1>
+                            </div>
+                    }
+                </div> :
+                <div className="mt-60 text-2xl">
+                    <h1>Application with ID {appID} is not found</h1>
+                </div>
             }
         </div >
     )

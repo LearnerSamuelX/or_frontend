@@ -38,7 +38,7 @@ function SubmitButton(
                 console.log(err)
             })
         } else {
-            console.log("Inputs are missing")
+            console.log("ERROR: Inputs are missing")
         }
     }
 
